@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YKS Rehberi</title>
+</head>
+<body style="font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8fafc; display: flex; flex-direction: column; min-height: 100vh;">
+
+    <!-- ÜST BAR: İÇERİK 1300PX SINIRINA KİLİTLENDİ VE SAĞA TAŞMA RİSKİ SIFIRLANDI -->
+    <div style="background-color: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 12px 0; box-shadow: 0 2px 4px rgba(0,0,0,0.01); width: 100%;">
+        <div style="max-width: 1300px; margin: 0 auto; padding: 0 20px; display: flex; align-items: center; justify-content: space-between; box-sizing: border-box;">
+            <div style="display: flex; align-items: center; gap: 12px;">
+                <div style="width: 36px; height: 36px; background-color: #1e3a8a; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">🎓</div>
+                <div style="display: flex; flex-direction: column;">
+                    <div style="font-size: 18px; font-weight: 700; color: #1e3a8a; line-height: 1.2;">YKS REHBERLİK PLATFORMU</div>
+                    <div style="font-size: 12px; color: #64748b; font-weight: bold; margin-top: 3px;">Hazırlayan: Ömer Faruk Darga</div>
+                </div>
+            </div>
+            <div style="display: flex; gap: 10px;">
+                <a href="https://osym.gov.tr" target="_blank" style="text-decoration: none;"><button style="padding: 10px 16px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #0f172a; color: white; border: none; border-radius: 6px; box-shadow: 0 2px 4px rgba(15,23,42,0.15);">📂 En Son Çıkmış Sorular</button></a>
+            </div>
+        </div>
+    </div>
+
+    <!-- ANA ÜÇLÜ SÜTUN DÜZENİ -->
+    <div style="display: flex; flex: 1; max-width: 1300px; margin: 20px auto; width: 100%; padding: 0 20px; box-sizing: border-box; gap: 20px;">
+        
+        <!-- SOL SÜTUN (YENİ Sınav Günü Kılavuzu Butonu Dahil) -->
+        <div style="width: 280px; background-color: #ffffff; padding: 20px; border: 2px solid #e2e8f0; border-radius: 12px; display: flex; flex-direction: column; box-sizing: border-box; height: fit-content; gap: 12px;">
+            <div style="background-color: #1e293b; color: #ffffff; padding: 12px; border-radius: 8px; text-align: center;"><h3 style="margin: 0 0 5px 0; color: #38bdf8; font-size: 11px;">YKS 2027 KALAN ZAMAN</h3><div id="sure-kutusu" style="font-size: 14px; font-weight: bold;">Hesaplanıyor...</div></div>
+            <h3 style="color: #64748b; font-size: 11px; margin: 5px 0 0 0; font-weight: bold; text-transform: uppercase;">Rehberlik</h3>
+            <a href="uygun-bolum.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; text-align: left;">🎯 Hangi Bölüm Uygun?</button></a>
+            <a href="soru-cevap.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; text-align: left;">💬 Soru - Cevap Köşesi</button></a>
+            <hr style="border: 0; border-top: 1px solid #e2e8f0;">
+            <h3 style="color: #64748b; font-size: 11px; margin: 0; font-weight: bold; text-transform: uppercase;">Sınavlar</h3>
+            <a href="tyt.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; text-align: left;">TYT Detayları</button></a>
+            <a href="ayt.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; text-align: left;">AYT Detayları</button></a>
+            <a href="dil.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; text-align: left;">DİL Detayları</button></a>
+            
+            <!-- YENİ BÖLÜM BUTONU: SINAV GÜNÜ REHBERİ -->
+            <a href="sinav-gunu.html" style="text-decoration: none; margin-top: 3px;"><button style="width: 100%; padding: 11px; font-size: 14px; font-weight: bold; cursor: pointer; background-color: #0f172a; color: white; border: none; border-radius: 6px; text-align: left;">🚨 Sınav Günü Kılavuzu</button></a>
+            
+            <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-top: 3px solid #1e3a8a; padding: 10px; border-radius: 6px; margin-top: 5px; box-sizing: border-box;">
+                <span style="font-size: 10px; color: #1e3a8a; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 4px; text-align: center;">Günün İlham Veren Sözü</span>
+                <div id="motivasyon-sozu" style="font-size: 12px; color: #334155; font-style: italic; line-height: 1.4; text-align: center; min-height: 60px; display: flex; align-items: center; justify-content: center;">Yükleniyor...</div>
+            </div>
+            <div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-top: 3px solid #0f172a; padding: 12px; border-radius: 6px; box-sizing: border-box; text-align: left;">
+                <span style="font-size: 10px; color: #0f172a; font-weight: bold; text-transform: uppercase; display: block; margin-bottom: 5px; text-align: center;">Hakkımda & Deneyimlerim</span>
+                <p style="font-size: 12px; color: #475569; line-height: 1.5; margin: 0; text-align: justify;">Merhaba arkadaşlar! Ben Ömer Faruk Darga. Bu platformda size anlattığım her kural bizzat geçtiğim yollardan ibaret. YKS maratonunu yaşadım ve tam 2 kere mezuna kaldım. Mezun senesinin o psikolojik baskısını çok iyi biliyorum. İçerikleri, sizleri çok iyi anlayan bir dostunuz olarak hazırladım.</p>
+            </div>
+        </div>
+
+        <!-- ORTA İÇERİK -->
+        <div style="flex: 1; background-color: #ffffff; padding: 25px; border: 2px solid #e2e8f0; border-radius: 12px; box-sizing: border-box; display: flex; flex-direction: column; gap: 12px; height: fit-content;">
+            <h2 style="color: #1e3a8a; font-size: 22px; margin: 0; font-weight: 900; border-bottom: 2px solid #e2e8f0; padding-bottom: 6px; text-align: center;">🚨 ÖSYM Kılavuzuna Göre En Kritik Altın Kurallar</h2>
+            <div id="kural-kutusu" style="display: flex; flex-direction: column; gap: 10px;"></div>
+        </div>
+        <!-- SAĞ SÜTUN -->
+        <div style="width: 300px; display: flex; flex-direction: column; gap: 15px; height: fit-content;">
+            <div style="background-color: #ffffff; padding: 20px; border: 2px solid #e2e8f0; border-radius: 12px; text-align: center; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;">
+                <span style="background-color: #fee2e2; color: #b91c1c; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; width: fit-content; margin: 0 auto;">Özel Alan</span>
+                <h3 style="color: #1e3a8a; font-size: 16px; font-weight: 900; margin: 0;">MEZUNA KALMAYI DÜŞÜNENLER BURAYA!</h3>
+                <p style="color: #475569; font-size: 13px; margin: 0; line-height: 1.4;">Mezuna kalmanın bir yenilgi olmadığını anlatan öğrenci dostu devasa rehber seni bekliyor.</p>
+                <a href="mezun.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 13px; font-weight: bold; background-color: #0f172a; color: white; border: none; border-radius: 6px; cursor: pointer;">Kılavuzu Oku →</button></a>
+            </div>
+            <div style="background-color: #ffffff; padding: 20px; border: 2px solid #e2e8f0; border-radius: 12px; text-align: center; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box;">
+                <span style="background-color: #dbeafe; color: #1e40af; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; width: fit-content; margin: 0 auto;">Tavsiye</span>
+                <h3 style="color: #1e3a8a; font-size: 16px; font-weight: 900; margin: 0;">TYT'DE ÖNERDİĞİM HOCALAR</h3>
+                <p style="color: #475569; font-size: 13px; margin: 0; line-height: 1.4;">Ders çalışırken internette kaybolmaman için süzgecimden geçmiş en kaliteli hoca tavsiyeleri.</p>
+                <a href="hocalar.html" style="text-decoration: none;"><button style="width: 100%; padding: 11px; font-size: 13px; font-weight: bold; background-color: #1e3a8a; color: white; border: none; border-radius: 6px; cursor: pointer;">Hoca Listesini Gör →</button></a>
+            </div>
+            <div style="background-color: #ffffff; padding: 20px; border: 2px solid #e2e8f0; border-radius: 12px; display: flex; flex-direction: column; gap: 10px; box-sizing: border-box; text-align: left;">
+                <span style="background-color: #f1f5f9; color: #334155; padding: 3px 8px; border-radius: 4px; font-size: 11px; font-weight: bold; width: fit-content; margin: 0 auto;">Alan Tavsiyesi</span>
+                <h3 style="color: #1e3a8a; font-size: 15px; font-weight: 900; margin: 0; text-align: center; line-height: 1.3;">AYT VE DİL HAKKINDA HOCA TAVSİYESİ</h3>
+                <p style="color: #475569; font-size: 13px; margin: 0; line-height: 1.5; text-align: justify;">
+                    Arkadaşlar, AYT ve DİL sınavları tamamen kişisel bilgi ve derin branş maratonları olduğu için, tek tip bir hoca listesine bağlı kalmamanız çok önemlidir. Kendi öğrenme stilinize, hedefinize ve seviyenize en uygun hocaları detaylıca araştırarak, videolarını önden analiz edip size en çok hitap eden anlatımı bulmanız başarı şansınızı kat kat artıracaktır. Sürecin lideri sizsiniz!
+                </p>
+            </div>
+        </div>
+
+    </div>
+
+    <footer style="text-align: center; padding: 15px; font-size: 14px; color: #64748b; border-top: 1px solid #e2e8f0; margin-top: auto; background: #fff;">
+        <p>Tüm Hakları Saklıdır &copy; 2026 | Üst Düzey YKS Rehberlik Platformu</p>
+    </footer>
+
+    <!-- SCRIPT MOTORLARI -->
+    <script>
+        var kurallar = [
+            { c: "#b91c1c", t: "🛑 1. Giriş İçin '09:45' Kuralı Kesindir", m: "Sınav sabahı saat 09:45'ten sonra binaya gelen hiçbir aday kesinlikle içeri alınmaz. En geç 09:00'da okulda bulunmalısınız." },
+            { c: "#1e3a8a", t: "📌 2. Puanın Hesaplanması İçin 0.5 Net Şartı", m: "Puan türünüzün hesaplanabilmesi için ilgili testlerin herhangi birinden en az 0.5 net yapmış olmanız yasal zorunluluktur." },
+            { c: "#1e3a8a", t: "🎯 3. Zor Sorunun Puan Getirisi Efsanedir", m: "Aynı test içindeki en zor soru ile en kolay soru tamamen aynı ham puanı getirir. Zor sorularla inatlaşarak süre kaybetmeyin." },
+            { c: "#1e3a8a", t: "✍️ 4. Tercih Yapıp Gitmemek OBP'yi Yarıya Düşürür", m: "Bir bölüme yerleşir ancak gidip kayıt yaptırmazsanız, sonraki sene OBP puanınızın getireceği ek puan resmi olarak yarı yarıya kesilir." },
+            { c: "#1e3a8a", t: "📋 5. Geçersiz Belgeler Sınavı İptal Eder", m: "Fotoğraflı kimlik kartınız ve o yıla ait Sınav Giriş Belgeniz eksiksiz olmalıdır. Üzerinde karalama olan belgeler sınavı iptal ettirir." }
+        ];
+
+        var sozler = [
+            "\"Bütün ümidim gençliktedir.\"<br>— Mustafa Kemal Atatürk",
+            "\"Çalışmak demek, boşuna yorulmak, terlemek değildir. Zamanın gereklerine göre bilim ve teknikten azami derecede istifade etmek zorunludur.\"<br>— Mustafa Kemal Atatürk",
+            "\"Eğitimdir ki bir milleti ya hür, bağımsız, şanlı, yüksek bir topluluk halinde yaşatır ya da esaret ve sefalete terk eder.\"<br>— Mustafa Kemal Atatürk",
+            "\"Gençliği yetiştiriniz. Onlara ilim ve irfanın müspet fikirlerini veriniz. İstikbalin aydınlığına onlarla kavuşacaksınız.\"<br>— Mustafa Kemal Atatürk",
+            "\"Dağ ne kadar yüksek olursa olsun, yol onun üzerinden geçer.\"<br>— Türk Atasözü",
+            "\"Kazanmak her şey değildir ama kazanmayı istemek her şeydir.\"<br>— Vince Lombardi",
+            "\"Hiç kimse başarı merdivenlerini elleri cebinde tırmanmamıştır.\"<br>— J. Keth Moorhead",
+            "\"Gelecek, işini iyi yapan, dürüst ve azimli olan gençlerin ellerinde şekillenecektir.\"<br>— Aziz Sancar",
+            "\"İlim tercüme ile olmaz, tetkik ile olur.\"<br>— Ali Kuşçu",
+            "\"Aklın üç ilkesi vardır: İyi düşünmek, iyi söylemek, iyi yapmak.\"<br>— Demokritos",
+            "\"Benim en büyük dostum ve mürşidim akıldır.\"<br>— İbn-i Sina",
+            "\"Yenilgi bir son değil, daha zekice bir başlangıç için fırsattır.\"<br>— Henry Ford",
+            "\"İmkansız dediğin şey, sadece birinin onu yapana kadar sürer.\"<br>— Akşemseddin",
+            "\"Karanlığa söveceğine, kalk bir mum yak.\"<br>— Konfüçyüs",
+            "\"Ulaşmak istediğin bir hedef varsa, rüzgarın yönünü değiştiremiyorsan yelkenlerini ona göre ayarla.\"<br>— Fatih Sultan Mehmet"
+        ];
+
+        var html = "";
+        kurallar.forEach(function(k) {
+            html += '<div style="background-color:#f8fafc; border:1px solid #cbd5e1; border-left:5px solid '+k.c+'; padding:10px 12px; border-radius:4px; box-sizing:border-box;">' +
+                    '<strong style="color:'+k.c+'; display:block; margin-bottom:2px; font-size:14px;">'+k.t+'</strong>' +
+                    '<span style="font-size:13px; color:#334155; line-height:1.4; display:block;">'+k.m+'</span>' +
+                    '</div>';
+        });
+        document.getElementById("kural-kutusu").innerHTML = html;
+
+        function gununSozunuSec() {
+            var kutu = document.getElementById("motivasyon-sozu");
+            if(kutu) {
+                var rastgeleIndeks = Math.floor(Math.random() * sozler.length);
+                kutu.innerHTML = sozler[rastgeleIndeks];
+            }
+        }
+
+        function sayaciBaslat() {
+            var s = new Date("June 19, 2027 10:15:00").getTime();
+            setInterval(function() {
+                var f = s - new Date().getTime();
+                var g = Math.floor(f / (1000*60*60*24)), sa = Math.floor((f % (1000*60*60*24)) / (1000*60*60)), d = Math.floor((f % (1000*60*60)) / (1000*60)), sn = Math.floor((f % (1000*60)) / 1000);
+                document.getElementById("sure-kutusu").innerHTML = g + " Gün " + sa + " Saat<br>" + d + " Dakika " + sn + " Saniye";
+            }, 1000);
+        }
+
+        window.onload = function() { sayaciBaslat(); gununSozunuSec(); };
+    </script>
+</body>
+</html>

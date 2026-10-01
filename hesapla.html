@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YKS Puan ve Sıralama Hesaplama</title>
+</head>
+<body style="font-family: Arial, sans-serif; padding: 0; margin: 0; background-color: #f1f5f9; color: #334155;">
+
+    <!-- ÜST BAR: ANA SAYFAYLA TAM GÖRSEL UYUM -->
+    <div style="background-color: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 36px; height: 36px; background-color: #1e3a8a; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">🎓</div>
+            <div style="display: flex; flex-direction: column;"><div style="font-size: 18px; font-weight: 700; color: #1e3a8a; line-height: 1.2;">YKS REHBERLİK PLATFORMU</div><div style="font-size: 12px; color: #64748b; font-weight: bold; margin-top: 3px;">Hazırlayan: Ömer Faruk Darga</div></div>
+        </div>
+        <a href="index.html" style="color: #1e3a8a; font-weight: bold; text-decoration: none; font-size: 14px; background: #f1f5f9; padding: 8px 14px; border-radius: 6px; border: 1px solid #cbd5e1;">← Ana Sayfaya Dön</a>
+    </div>
+
+    <!-- HESAPLAMA PANELİ -->
+    <div style="max-width: 650px; margin: 25px auto; background-color: #ffffff; padding: 25px; border-radius: 12px; border: 2px solid #e2e8f0; width: 90%; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <h2 style="color: #1e3a8a; margin-top: 0; text-align: center; font-size: 22px;">📊 YKS Puan ve Sıralama Hesaplama</h2>
+        <div style="background: #f8fafc; padding: 12px; border: 1px solid #cbd5e1; border-radius: 6px; margin-bottom: 20px;"><label style="font-weight: bold; display: block; margin-bottom: 5px;">Diploma Notunuz (50 - 100):</label><input type="number" id="diploma" placeholder="Örn: 85" min="50" max="100" style="width: 100%; padding: 8px; border: 1px solid #cbd5e1; border-radius: 4px;"></div>
+        <div style="display: grid; grid-template-columns: 2fr 1fr 1fr; font-weight: bold; color: #64748b; font-size: 12px; margin-bottom: 8px; padding: 0 5px;"><div>DERS ADI</div><div style="text-align:center">DOĞRU</div><div style="text-align:center">YANLIŞ</div></div>
+        <div id="ders-listesi" style="display: flex; flex-direction: column; gap: 8px; margin-bottom: 20px;"></div>
+        <button onclick="yksHesapla()" style="background-color: #1e3a8a; color: white; border: none; padding: 14px; font-size: 16px; font-weight: bold; border-radius: 6px; cursor: pointer; width: 100%; box-shadow: 0 4px 6px rgba(30,58,138,0.15);">Hesapla</button>
+        <div id="sonucKutusu" style="display: none; margin-top: 20px; padding: 20px; background-color: #f8fafc; border: 2px solid #e2e8f0; border-radius: 8px; display: flex; flex-direction: column; gap: 12px;"><h3 style="margin: 0 0 5px 0; color: #1e3a8a; text-align: center; border-bottom: 1px solid #e2e8f0; padding-bottom: 8px;">📊 YKS Sonuç ve Sıralama Simülasyonu</h3><div style="display: flex; justify-content: space-between; font-size: 14px; background: #fff; padding: 8px; border-radius: 4px; border: 1px solid #e2e8f0;"><span><strong>Toplam TYT Netiniz:</strong></span> <span id="rTyt" style="font-weight:bold; color:#2563eb;">0.00</span></div><div style="display: flex; justify-content: space-between; font-size: 14px; background: #fff; padding: 8px; border-radius: 4px; border: 1px solid #e2e8f0;"><span><strong>Toplam AYT Netiniz:</strong></span> <span id="rAyt" style="font-weight:bold; color:#16a34a;">0.00</span></div><div style="margin-top: 10px; display: flex; flex-direction: column; gap: 8px;"><div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: bold; color: #1e3a8a; font-size: 15px;">🔬 SAYISAL</div><div style="font-size: 13px; color: #334155;">Yerleştirme: <span id="rSay" style="font-weight: bold;">0</span></div></div><div style="text-align: right;"><div style="font-size: 11px; color: #64748b; font-weight: bold;">TAHMİNİ SIRALAMA</div><div id="sSay" style="font-size: 16px; font-weight: bold; color: #1e3a8a;">-</div></div></div><div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: bold; color: #1e3a8a; font-size: 15px;">⚖️ EŞİT AĞIRLIK</div><div style="font-size: 13px; color: #334155;">Yerleştirme: <span id="rEa" style="font-weight: bold;">0</span></div></div><div style="text-align: right;"><div style="font-size: 11px; color: #64748b; font-weight: bold;">TAHMİNİ SIRALAMA</div><div id="sEa" style="font-size: 16px; font-weight: bold; color: #1e3a8a;">-</div></div></div><div style="background: #ffffff; padding: 10px; border-radius: 6px; border: 1px solid #cbd5e1; display: flex; justify-content: space-between; align-items: center;"><div><div style="font-weight: bold; color: #1e3a8a; font-size: 15px;">📚 SÖZEL</div><div style="font-size: 13px; color: #334155;">Yerleştirme: <span id="rSoz" style="font-weight: bold;">0</span></div></div><div style="text-align: right;"><div style="font-size: 11px; color: #64748b; font-weight: bold;">TAHMİNİ SIRALAMA</div><div id="sSoz" style="font-size: 16px; font-weight: bold; color: #1e3a8a;">-</div></div></div></div><p style="font-size: 11px; color: #64748b; margin: 5px 0 0 0; text-align: center;">*Sıralamalar son resmi YKS verilerine göre simüle edilmiştir.</p></div>
+    </div>
+
+    <script>
+        var dersler = [{ id: "tur", ad: "TYT Türkçe (40 Soru)" },{ id: "mat", ad: "TYT Matematik (40 Soru)" },{ id: "sos", ad: "TYT Sosyal (20 Soru)" },{ id: "fen", ad: "TYT Fen (20 Soru)" },{ id: "amat", ad: "AYT Matematik (40 Soru)" },{ id: "aed", ad: "AYT Edebiyat-Sos1 (40 Soru)" },{ id: "afen", ad: "AYT Fen Bilimleri (40 Soru)" },{ id: "asos2", ad: "AYT Sosyal-2 (40 Soru)" }];
+        var html = ""; dersler.forEach(function(d) { html += '<div style="display:flex; align-items:center; background:#f8fafc; padding:6px 10px; border-radius:6px; border:1px solid #e2e8f0;"><div style="flex:2; font-weight:bold; font-size:14px;">'+d.ad+'</div><div style="flex:1; padding:0 5px;"><input type="number" id="'+d.id+'D" placeholder="0" min="0" style="width:100%; padding:5px; text-align:center; border:1px solid #cbd5e1; border-radius:4px;"></div><div style="flex:1; padding:0 5px;"><input type="number" id="'+d.id+'Y" placeholder="0" min="0" style="width:100%; padding:5px; text-align:center; border:1px solid #cbd5e1; border-radius:4px;"></div></div>'; });
+        document.getElementById("ders-listesi").innerHTML = html;
+        function netAl(id) { var d = parseFloat(document.getElementById(id+"D").value) || 0, y = parseFloat(document.getElementById(id+"Y").value) || 0, n = d - (y * 0.25); return n < 0 ? 0 : n; }
+        function siralaBul(puan, tur) { if (puan <= 100) return "-"; var s = 0; if(tur === 'say') { s = Math.exp((560 - puan) / 38) * 120; } else if(tur === 'ea') { s = Math.exp((550 - puan) / 42) * 150; } else { s = Math.exp((540 - puan) / 45) * 180; } if(s < 1) s = 1; return Math.floor(s).toLocaleString('tr-TR') + "."; }
+        function yksHesapla() {
+            var dip = parseFloat(document.getElementById("diploma").value) || 50; if(dip < 50) dip = 50; if(dip > 100) dip = 100; var obp = dip * 0.6;
+            var tN = netAl("tur") + netAl("mat") + netAl("sos") + netAl("fen"), aN = netAl("amat") + netAl("aed") + netAl("afen") + netAl("asos2"), tytKatki = tN * 1.33;
+            var say = 100 + tytKatki + (netAl("amat") * 3.00) + (netAl("afen") * 3.00) + obp, ea = 100 + tytKatki + (netAl("amat") * 3.00) + (netAl("aed") * 3.00) + obp, soz = 100 + tytKatki + (netAl("aed") * 3.00) + (netAl("asos2") * 3.00) + obp;
+            document.getElementById("rTyt").innerText = tN.toFixed(2); document.getElementById("rAyt").innerText = aN.toFixed(2);
+            document.getElementById("rSay").innerText = say.toFixed(3); document.getElementById("rEa").innerText = ea.toFixed(3); document.getElementById("rSoz").innerText = soz.toFixed(3);
+            document.getElementById("sSay").innerText = siralaBul(say, 'say'); document.getElementById("sEa").innerText = siralaBul(ea, 'ea'); document.getElementById("sSoz").innerText = siralaBul(soz, 'soz');
+            document.getElementById("sonucKutusu").style.display = "block"; document.getElementById("sonucKutusu").scrollIntoView({ behavior: 'smooth' });
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrencilerin Merak Ettikleri</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.7; padding: 0; margin: 0; background-color: #f1f5f9; color: #334155;">
+
+    <!-- ÜST BAR: ANA SAYFAYLA TAM GÖRSEL UYUM -->
+    <div style="background-color: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 12px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">
+        <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 36px; height: 36px; background-color: #1e3a8a; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: white; font-size: 18px; font-weight: bold;">🎓</div>
+            <div style="display: flex; flex-direction: column;"><div style="font-size: 18px; font-weight: 700; color: #1e3a8a; line-height: 1.2;">YKS REHBERLİK PLATFORMU</div><div style="font-size: 12px; color: #64748b; font-weight: bold; margin-top: 3px;">Hazırlayan: Ömer Faruk Darga</div></div>
+        </div>
+        <a href="index.html" style="color: #1e3a8a; font-weight: bold; text-decoration: none; font-size: 14px; background: #f1f5f9; padding: 8px 14px; border-radius: 6px; border: 1px solid #cbd5e1;">← Ana Sayfaya Dön</a>
+    </div>
+
+    <!-- ANA PANEL -->
+    <div style="max-width: 800px; margin: 30px auto; background-color: #ffffff; padding: 35px; border-radius: 12px; border: 2px solid #e2e8f0; width: 95%; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <h2 style="color: #1e3a8a; font-size: 26px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; text-align: center;">💬 Öğrencilerin Merak Ettikleri & Cevaplar</h2>
+        <p style="font-size: 15px; color: #64748b; text-align: center; margin-bottom: 30px;">Aklına takılan tüm soruların resmi, ciddî ve gerçekçi yanıtlarını buradan inceleyebilirsin.</p>
+        <div id="soru-kutulari" style="display: flex; flex-direction: column; gap: 20px;"></div>
+    </div>
+
+    <script>
+        var SSSVerileri = [
+            { q: "❓ Çalışıyorum ama netlerim bir türlü yükselmiyor, nerede hata yapıyorum?", a: "<strong>Cevap:</strong> Netlerin bir süre sabit kalması bilimsel olarak çok normaldir. Buna 'öğrenme platosu' denir. Sadece konu çalışıp yeterince 'analizli deneme' çözmediğinde yaşanır. Hatalı olduğun konuların üzerine gitmelisin." },
+            { q: "❓ Son sınavlardaki gibi yığılmalardan etkilenmemek için ne yapmalıyım?", a: "<strong>Cevap:</strong> Herkesin standart yaptığı netlerin üzerine çıkmalısın. Sayısalcıysan TYT Sosyal netleri, Sözelciysen TYT Matematik'ten yapacağın 3-4 net seni yığılmadan kurtarır ve öne fırlatır." },
+            { q: "❓ Günde kaç soru çözmeliyim? Belli bir soru sayısı hedefi koymak doğru mu?", a: "<strong>Cevap:</strong> Soru sayısı değil, nitelik önemlidir. Sırf 300 soru çözmek için kolay sorular çözmek vakit kaybıdır. Önemli olan eksik olduğun ÖSYM tarzı sorulardan analiz ederek çözmendir." },
+            { q: "❓ Deneme analizini tam olarak nasıl yapmalıyım? Yanlış soruları ne yapacağım?", a: "<strong>Cevap:</strong> Deneme biter bitmez yanlış veya boş bıraktığın her sorunun çözümünü kesinlikle öğrenmelisin. Eğer o konuyu hiç bilmiyorsan hemen o hafta küçük bir konu tekrarı yapmalısın." },
+            { q: "❓ TYT'de süre yetiştiremiyorum, özellikle paragraf ve problemler vakit kaybettiriyor. Çözümü nedir?", a: "<strong>Cevap:</strong> Her sabah kronometre tutarak 20 Paragraf ve 20 Problem çözmelisin. Ayrıca sınav esnasında bir soruya 2 dakikadan fazla takılıyorsan inat etmeyi bırakıp Turlama Taktiği uygulamalısın." },
+            { q: "❓ YKS'de uyku düzeni nasıl olmalı? Gece çalışmak mantıklı mı?", a: "<strong>Cevap:</strong> ÖSYM sınavları sabah 10:15'te yapıyor. Beynini sabah odaklanmaya alıştırmalısın. En ideali gece en geç 00:00 gibi uyuyup, sabah 07:00 civarı güne başlamaktır." },
+            { q: "❓ Kaynak seçimi yaparken nelere dikkat etmeliyim?", a: "<strong>Cevap:</strong> Seviyene göre kademeli gitmelisin. Sıfırdan başlıyorsan kolay-orta, konular oturdukça doğrudan ÖSYM'nin yeni nesil mantığına uygun, muhakeme odaklı güncel kaynaklara geçmelisin." },
+            { q: "❓ Sınav stresi ve 'ya kazanamazsam' korkusuyla nasıl başa çıkabilirim?", a: "<strong>Cevap:</strong> Bu korku çok insanidir. Gelecekteki ihtimalleri düşünerek bugünün enerjisini tüketme. Sınav gününü değil, sadece bugünkü çalışma planını düşün. Sen çalıştıkça korkunun azaldığını göreceksin." },
+            { q: "❓ Sınav yaklaştığında (Son 2-3 ay) çalışmayı bırakıp sadece seri deneme mi çözmeliyim?", a: "<strong>Cevap:</strong> Sadece genel deneme çözmek hatadır. Denemelerin yanına eksik analizi yaptığınız branş denemelerini ve en önemlisi ÖSYM'nin geçmiş yıllardaki çıkmış sorularını yerleştirmelisiniz." },
+            { q: "❓ Sınav anında turlama taktiği tam olarak nasıl uygulanır?", a: "<strong>Cevap:</strong> İlk turda sadece kolay ve emin olduğunuz soruları çözersiniz. Vakit alacak soruların yanına bir işaret koyup hemen geçersiniz. İlk tur bittikten sonra kalan zamanda o zor sorulara rahatça dönersiniz." },
+            { q: "❓ Sınav günü sınav salonuna girerken nelere dikkat etmeliyim, süre kuralı nedir?", a: "<strong>Cevap:</strong> Sınav binalarına saat 09:45'ten sonra hiçbir aday alınmaz. Kimlik belgeniz ve sınav giriş belgeniz eksiksiz olmalıdır. Kodlamaları her sorudan sonra veya sayfa sayfa yapmalısınız." },
+            { q: "❓ Mezuna kalmak mantıklı bir karar mı, hangi durumlarda mezuna kalınmalı?", a: "<strong>Cevap:</strong> Çalışma disiplininizi bu yıl oturtamadıysanız veya hedefinizle aldığınız puan arasında çok ciddi bir sıralama farkı varsa mezuna kalmak mantıklıdır. Mezuna kalmak yeni ve bilinçli bir başlangıçtır." }
+        ];
+        var kutu = document.getElementById("soru-kutulari"), htmlgirdi = "";
+        SSSVerileri.forEach(function(item) { htmlgirdi += '<div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 5px solid #1e3a8a; border-radius: 6px; padding: 20px;"><h4 style="color: #1e3a8a; margin: 0 0 10px 0; font-size: 16px; font-weight: bold;">' + item.q + '</h4><p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">' + item.a + '</p></div>'; });
+        kutu.innerHTML = htmlgirdi;
+    </script>
+</body>
+</html>

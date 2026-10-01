@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Öğrencilerin Merak Ettikleri</title>
+</head>
+<body style="font-family: Arial, sans-serif; line-height: 1.7; padding: 0; margin: 0; background-color: #f1f5f9; color: #334155;">
+
+    <!-- ÜST BAR -->
+    <div style="background-color: #ffffff; border-bottom: 2px solid #e2e8f0; padding: 15px 40px; display: flex; align-items: center; justify-content: space-between; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">
+        <div style="font-size: 16px; font-weight: 700; color: #1e3a8a;">🎓 YKS REHBERLİK PLATFORMU</div>
+        <a href="index.html" style="color: #1e3a8a; font-weight: bold; text-decoration: none; font-size: 14px;">← Ana Sayfaya Dön</a>
+    </div>
+
+    <!-- ANA PANEL -->
+    <div style="max-width: 800px; margin: 30px auto; background-color: #ffffff; padding: 35px; border-radius: 12px; border: 2px solid #e2e8f0; width: 95%; box-sizing: border-box; box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+        <h2 style="color: #1e3a8a; font-size: 26px; border-bottom: 2px solid #e2e8f0; padding-bottom: 12px; margin-top: 0; text-align: center;">💬 Öğrencilerin Merak Ettikleri & Cevaplar</h2>
+        <p style="font-size: 15px; color: #64748b; text-align: center; margin-bottom: 30px;">Aklına takılan tüm soruların resmi, ciddî ve gerçekçi yanıtlarını buradan inceleyebilirsin.</p>
+
+        <!-- NUMARASIZ ŞIK KART DÜZENİ -->
+        <div id="soru-kutulari" style="display: flex; flex-direction: column; gap: 20px;"></div>
+    </div>
+
+    <script>
+        // 12 Büyük Soru Verisi (Tamamen Numarasız ve Resmi Format)
+        var SSSVerileri = [
+            {
+                q: "❓ Çalışıyorum ama netlerim bir türlü yükselmiyor, nerede hata yapıyorum?",
+                a: "<strong>Cevap:</strong> Sevgili arkadaşım, hazırlık sürecinde netlerin bir süre sabit kalması bilimsel olarak çok normaldir. Buna 'öğrenme platosu' denir. Netlerinin artmamasının sebebi muhtemelen sadece konu çalışıp yeterince 'analizli deneme' çözmemendir. Hatalı olduğun konuların üzerine gitmeli, sırf bildiğin konuları çözerek vakit kaybetmemelisin."
+            },
+            {
+                q: "❓ Son sınavlardaki gibi yığılmalardan etkilenmemek için ne yapmalıyım?",
+                a: "<strong>Cevap:</strong> Yığılmalardan kurtulmanın tek yolu, herkesin standart olarak yaptığı netlerin üzerine çıkmaktır. Örneğin; bir Sayısal öğrencisiysen herkes Matematik ve Fen yapar. Seni öne geçirecek ve yığılmadan kurtaracak yer 20 soruluk TYT Sosyal testidir. Aynı şekilde Sözelciysen TYT Matematik'ten yapacağın 3-4 net seni binlerce kişinin önüne fırlatır."
+            },
+            {
+                q: "❓ Günde kaç soru çözmeliyim? Belli bir soru sayısı hedefi koymak doğru mu?",
+                a: "<strong>Cevap:</strong> Nicelik (soru sayısı) değil, nitelik (sorunun kalitesi) önemlidir. Sırf 300 soru çözmek için bildiğin konulardan kolay sorular çözmek seni öne geçirmez. Önemli olan eksik olduğun, ÖSYM tarzı yeni nesil sorulardan günde 80-100 tane bile olsa analiz ederek çözmendir."
+            },
+            {
+                q: "❓ Deneme analizini tam olarak nasıl yapmalıyım? Yanlış soruları ne yapacağım?",
+                a: "<strong>Cevap:</strong> Deneme biter bitmez sadece doğru sayına bakıp kitapçığı kenara fırlatıyorsan gelişemezsin. Yanlış yaptığın veya boş bıraktığın her sorunun çözümünü kesinlikle öğrenmelisin. Eğer o konuyu hiç bilmiyorsan hemen defterine not alıp o hafta küçük bir konu tekrarı yapmalısın."
+            },
+            {
+                q: "❓ TYT'de süre yetiştiremiyorum, özellikle paragraf ve problemlerde çok vakit kaybediyorum. Çözümü nedir?",
+                a: "<strong>Cevap:</strong> TYT bir hız sınavıdır. Süre sorununu çözmenin tek yolu her sabah aksatmadan 20 Paragraf ve 20 Problem sorusunu <strong>kronometre tutarak</strong> çözmendir. Ayrıca sınav esnasında bir soruya 2 dakikadan fazla takılıyorsan, o soruya inat etmeyi bırakıp 'Turlama Taktiği' ile diğer sorulara geçmeyi öğrenmelisin."
+            },
+            {
+                q: "❓ YKS'de uyku düzeni ve çalışma saatleri nasıl olmalı? Gece çalışmak mantıklı mı?",
+                a: "<strong>Cevap:</strong> ÖSYM sınavları sabah saat 10:15'te yapıyor. Vücudunun ve beyninin en yüksek performansa sabah saatlerinde ulaşması gerekir. Bu yüzden sabahlara kadar çalışıp öğlene kadar uyumak sınav biyolojine zarar verir. En ideali gece en geç 23:30 - 00:00 gibi uyuyup, sabah 07:00 civarı güne başlamaktır."
+            },
+            {
+                q: "❓ Kaynak seçimi yaparken nelere dikkat etmeliyim? Her kaynağı çözmeli miyim?",
+                a: "<strong>Cevap:</strong> Piyasadaki her kitabı çözmek zorunda değilsin. Kaynak seçimi seviyene göre kademeli olmalıdır. Sıfırdan başlıyorsan kolay-orta seviye, konular oturdukça ise doğrudan ÖSYM'nin yeni nesil mantığına uygun, muhakeme odaklı güncel kaynaklara geçmelisin. ÖSYM diline en yakın kaynağı sindire sindire çözmek başarıyı getirir."
+            },
+            {
+                q: "❓ Sınav stresi ve 'ya kazanamazsam' korkusuyla nasıl başa çıkabilirim?",
+                a: "<strong>Cevap:</strong> Bu korku, emeğine değer veren her öğrencide olur ve çok insanidir. Ancak gelecekteki ihtimalleri düşünerek bugünün enerjisini tüketmemelisin. Sınav gününü değil, sadece bugünkü çalışma planını düşün. Sen üzerine düşen sorumluluğu yerine getirdikçe korkunun azaldığını göreceksin."
+            },
+            {
+                q: "❓ Sınav yaklaştığında (Son 2-3 ay) çalışmayı bırakıp sadece seri deneme mi çözmeliyim?",
+                a: "<strong>Cevap:</strong> Kulaktan dolma bilgilere inanmayın. Son aylarda sadece genel deneme çözmek hatadır. Denemelerin yanına eksik analizi yaptığınız branş denemelerini ve en önemlisi ÖSYM'nin geçmiş yıllardaki çıkmış sorularını (çıkmış sorular altın değerindedir) yerleştirmelisiniz. Ayrıca unuttuğunuz ezber konuları için nokta atışı konu okumalarına devam etmelisiniz."
+            },
+            {
+                q: "❓ Sınav anında turlama taktiği tam olarak nasıl uygulanır?",
+                a: "<strong>Cevap:</strong> Turlama taktiği ÖSYM sınavlarının hayat kurtaran en büyük stratejisidir. İlk turda sadece kolay, yapabileceğiniz ve emin olduğunuz soruları çözersiniz. Sizi uğraştıracak, vakit alacak veya o an hatırlayamadığınız soruların yanına bir işaret koyup (örneğin yuvarlak veya soru işareti) hiç inatlaşmadan hemen geçersiniz. İlk tur bittikten sonra zaman kalacağı için o zor sorulara ikinci turda kafanız rahat bir şekilde dönersiniz."
+            },
+            {
+                q: "❓ Sınav günü sınav salonuna girerken nelere dikkat etmeliyim, süre kuralı nedir?",
+                a: "<strong>Cevap:</strong> ÖSYM'nin tavizsiz uyguladığı en katı kural '09:45' kuralıdır. Sınav binalarına saat 09:45'ten sonra hiçbir aday kesinlikle alınmaz. Sınav ise 10:15'te başlar. Kimlik belgeniz ve sınav giriş belgeniz yanınızda eksiksiz olmalıdır. Sınav anında ise optik forma kodlamaları her sorudan sonra veya sayfa sayfa yapmalısınız; en sona bırakmak kaydırma riskini artırır."
+            },
+            {
+                q: "❓ Mezuna kalmak mantıklı bir karar mı, hangi durumlarda mezuna kalınmalı?",
+                a: "<strong>Cevap:</strong> Mezuna kalmak bir yenilgi değil, yeni ve daha bilinçli bir başlangıçtır. Eğer sınav yılında elinizden geleni yapmadığınızı düşünüyorsanız, çalışma disiplininizi bu yıl oturtamadıysanız veya hedefinizle aldığınız puan arasında çok ciddi bir sıralama farkı varsa mezuna kalmak mantıklıdır. Ancak mezun senesinde aynı hataları yapmayacak psikolojik gücü kendinizde bulmalısınız."
+            }
+        ];
+
+        // Ekrana basma motoru
+        var kutu = document.getElementById("soru-kutulari");
+        var htmlgirdi = "";
+        SSSVerileri.forEach(function(item) {
+            htmlgirdi += '<div style="background-color: #f8fafc; border: 1px solid #cbd5e1; border-left: 5px solid #1e3a8a; border-radius: 6px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,0.01);">' +
+                         '<h4 style="color: #1e3a8a; margin: 0 0 10px 0; font-size: 16px; font-weight: bold;">' + item.q + '</h4>' +
+                         '<p style="margin: 0; color: #475569; font-size: 15px; line-height: 1.6;">' + item.a + '</p>' +
+                         '</div>';
+        });
+        kutu.innerHTML = htmlgirdi;
+    </script>
+</body>
+</html>
